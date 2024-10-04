@@ -2,9 +2,9 @@
 pragma solidity ^0.8.13;
 
 import {Test, console} from "forge-std/Test.sol";
-import {Groth16Verifier} from "../src/Groth16Verifier.sol";
+import {Groth16Verifier} from "../src/SnarkjsVerifier.sol";
 
-contract Groth16VerifierTest is Test {
+contract SnarkjsVerifier is Test {
     Groth16Verifier public verifier;
 
     function setUp() public {
