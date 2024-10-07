@@ -1,19 +1,25 @@
-## Foundry
+# Groth16 Verifier Contract
+```bash
+# Unit tests
+forge test
+forge test --match-test testGnark -vvvv
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+# Deploy and call verify function
+# Add your secret in .env
+source .env
 
-Foundry consists of:
+# XLayer
+# simulate on XLayer, legacy mode without EIP-1559
+forge script script/GnarkP256Verifier.sol --rpc-url $XLAYER_RPC_URL --legacy 
+# Real deployment, with --broadcast
+forge script script/GnarkP256Verifier.sol --rpc-url $XLAYER_RPC_URL --legacy --broadcast
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+# Sepolia
+forge script script/GnarkP256Verifier.sol --rpc-url $SEPOLIA_RPC_URL
+forge script script/GnarkP256Verifier.sol --rpc-url $SEPOLIA_RPC_URL --broadcast
+```
 
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
+## Foundry Usage
 
 ### Build
 

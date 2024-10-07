@@ -1,0 +1,3 @@
+GnarkKeccakTest:test_keccak() (gas: 6582)
+GnarkP256Verifier:testGnark() (gas: 316824)
+SnarkjsVerifier:test_verify_and_increment_counter() (gas: 8937393460516739113)

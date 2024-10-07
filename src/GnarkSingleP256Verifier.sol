@@ -571,6 +571,15 @@ contract Verifier {
         }
     }
 
+    function callVerifyProof(
+        uint256[8] calldata proof,
+        uint256[2] calldata commitments,
+        uint256[2] calldata commitmentPok,
+        uint256[1] calldata input
+    ) public {
+        verifyProof(proof, commitments, commitmentPok, input);
+    }
+    
     /// Verify an uncompressed Groth16 proof.
     /// @notice Reverts with InvalidProof if the proof is invalid or
     /// with PublicInputNotInField the public input is not reduced.
