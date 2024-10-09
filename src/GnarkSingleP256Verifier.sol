@@ -453,6 +453,15 @@ contract Verifier {
         compressedCommitmentPok = compress_g1(commitmentPok[0], commitmentPok[1]);
     }
 
+    function callVerifyCompressedProof(
+        uint256[4] calldata compressedProof,
+        uint256[1] calldata compressedCommitments,
+        uint256 compressedCommitmentPok,
+        uint256[1] calldata input
+    ) public {
+        verifyCompressedProof(compressedProof, compressedCommitments, compressedCommitmentPok, input);
+    }
+
     /// Verify a Groth16 proof with compressed points.
     /// @notice Reverts with InvalidProof if the proof is invalid or
     /// with PublicInputNotInField the public input is not reduced.

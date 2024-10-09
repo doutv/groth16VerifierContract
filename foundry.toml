@@ -6,3 +6,6 @@ libs = ["lib"]
 [rpc_endpoints]
 sepolia = "${SEPOLIA_RPC_URL}"
 xlayer = "${XLAYER_RPC_URL}"
+
+[etherscan]
+sepolia = { key = "${ETHERSCAN_API_KEY}", url = "https://api-sepolia.etherscan.io/api"}

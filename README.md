@@ -17,6 +17,12 @@ forge script script/GnarkP256Verifier.sol --rpc-url $XLAYER_RPC_URL --legacy --b
 # Sepolia
 forge script script/GnarkP256Verifier.sol --rpc-url $SEPOLIA_RPC_URL
 forge script script/GnarkP256Verifier.sol --rpc-url $SEPOLIA_RPC_URL --broadcast
+# If you want to verify the contract on etherscan
+# Example: https://sepolia.etherscan.io/address/0x1566a49f49130C4a809909951D230A22B6FeCaFf
+forge script script/GnarkP256Verifier.sol --rpc-url $SEPOLIA_RPC_URL --broadcast --verify
+# call function of a deployed contract
+export sepolia_contract=<sepolia_contract_address>
+forge script script/GnarkP256Verifier.sol --rpc-url $SEPOLIA_RPC_URL --sig callVerifyProof $sepolia_contract
 ```
 
 ## Foundry Usage
