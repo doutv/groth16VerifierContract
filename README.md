@@ -1,13 +1,13 @@
 # Groth16 Verifier Contract
 ```bash
 # Unit tests
-forge test
-forge test --match-test testGnark -vvvv
+forge test --via-ir
 
 # Deploy and call verify function
 # Add your secret in .env
 source .env
 
+# 1 signature per proof
 # XLayer
 # simulate on XLayer, legacy mode without EIP-1559
 forge script script/GnarkP256Verifier.sol --rpc-url $XLAYER_RPC_URL --legacy 
@@ -23,6 +23,10 @@ forge script script/GnarkP256Verifier.sol --rpc-url $SEPOLIA_RPC_URL --broadcast
 # call function of a deployed contract
 export sepolia_contract=<sepolia_contract_address>
 forge script script/GnarkP256Verifier.sol --rpc-url $SEPOLIA_RPC_URL --sig callVerifyProof $sepolia_contract
+
+# 10 signatures per proof
+# Sepolia
+forge script script/p256-10Verifier.sol --rpc-url $SEPOLIA_RPC_URL --via-ir --broadcast --verify
 ```
 
 ## Foundry Usage
