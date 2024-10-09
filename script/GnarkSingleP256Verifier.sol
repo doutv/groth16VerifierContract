@@ -7,7 +7,7 @@ import {Verifier} from "../src/GnarkSingleP256Verifier.sol";
 contract DeployAndVerifyProofScript is Script {
     uint256[8] proof;
     uint256[2] commitments;
-    uint256[2] commitmentsPok;
+    uint256[2] commitmentPok;
 
     uint256[4] compressedProof;
     uint256[1] compressedCommitments;
@@ -50,7 +50,7 @@ contract DeployAndVerifyProofScript is Script {
                 0x274A18E703DE630563AADC1B90DF7967EA492857EEF2CED4B91EDAB614CEF9E6
             )
         ];
-        commitmentsPok = [
+        commitmentPok = [
             uint256(
                 0x1844777ACDCDCD7D9646492F395E7DE7752403A8F017F988DCA9AFF41BEDA22C
             ),
@@ -107,7 +107,7 @@ contract DeployAndVerifyProofScript is Script {
             verifier.callVerifyProof(
                 proof,
                 commitments,
-                commitmentsPok,
+                commitmentPok,
                 publicInput
             )
         {
@@ -127,7 +127,7 @@ contract DeployAndVerifyProofScript is Script {
         //     uint256[4] memory compressedProof,
         //     uint256[1] memory compressedCommitments,
         //     uint256 compressedCommitmentsPok
-        // ) = verifier.compressProof(proof, commitments, commitmentsPok);
+        // ) = verifier.compressProof(proof, commitments, commitmentPok);
         // console.logUint(compressedProof[0]);
         // console.logUint(compressedProof[1]);
         // console.logUint(compressedProof[2]);

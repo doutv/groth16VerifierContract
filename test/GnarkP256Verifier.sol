@@ -27,7 +27,7 @@ contract GnarkP256Verifier is Test {
             uint256(0x0C832C534D1BD3A5A9559DB1169638788EC892FFC217DF49D3C2FEFBA98E6676),
             uint256(0x274A18E703DE630563AADC1B90DF7967EA492857EEF2CED4B91EDAB614CEF9E6)
         ];
-        uint256[2] memory commitmentsPok = [
+        uint256[2] memory commitmentPok = [
             uint256(0x1844777ACDCDCD7D9646492F395E7DE7752403A8F017F988DCA9AFF41BEDA22C),
             uint256(0x254D96DC20EE821A48C5EA595427D0FA63939780E75AEFD87CF1228C1088B16C)
         ];
@@ -46,7 +46,7 @@ contract GnarkP256Verifier is Test {
         assert(publicInput[0] == uint256(calculatedHash));
 
         // Expect the transaction to succeed
-        verifier.verifyProof(proof, commitments, commitmentsPok, [uint256(calculatedHash)]);
+        verifier.verifyProof(proof, commitments, commitmentPok, [uint256(calculatedHash)]);
 
         // Expect the transaction to fail with fake proof
         // uint256[2] memory fake_a = [

@@ -26,7 +26,7 @@ contract GnarkP256Verifier is Test {
             uint256(0x032AFC4FA24014E503D42052A52FF814628C7EE24CF555F1C08F09B365F98D42),
             uint256(0x157A2732C40ABA0A752BA9B09C236B146F8166763DC6E596C021EDE0650B034A)
         ];
-        uint256[2] memory commitmentsPok = [
+        uint256[2] memory commitmentPok = [
             uint256(0x2D73A3AE1E7D1365AE44C36204FB9280DEDCC250DB8D4F24858A8969ED542B1D),
             uint256(0x228F0592B8F77F4D8AD72FF574AF1B6E1AFDCAD2324CBBF1280D45A60A22226D)
         ];
@@ -73,13 +73,13 @@ contract GnarkP256Verifier is Test {
         bytes32 hashOut = verifier.hash10Signatures(pubkeyX, pubkeyY, txHash);
         assert(hashOut == expectedHashOut);
         // Expect verify to succeed
-        verifier.callVerify10Signatures(proof, commitments, commitmentsPok, pubkeyX, pubkeyY, txHash);
+        verifier.callVerify10Signatures(proof, commitments, commitmentPok, pubkeyX, pubkeyY, txHash);
 
         // Expect the transaction to fail with fake proof
         uint256[8] memory fakeProof = proof;
         fakeProof[5] = 0x0EB92045FDE9C3170CCA6F6CD06B22C13AC0312C13B78E88D8A7E0BA9D7E6ECA;
         vm.expectRevert();
-        verifier.callVerify10Signatures(fakeProof, commitments, commitmentsPok, pubkeyX, pubkeyY, txHash);
+        verifier.callVerify10Signatures(fakeProof, commitments, commitmentPok, pubkeyX, pubkeyY, txHash);
 
         // Replace pubkeyX, pubkeyY, txHash with fake values
         uint256[10] memory fakePubkeyX = pubkeyX;
@@ -89,6 +89,6 @@ contract GnarkP256Verifier is Test {
         uint256[10] memory fakeTxHash = txHash;
         txHash[0] = 0x7e706b39a6801e115d58a3bd4d82fde24615b92b3283aab5081a72c5ad62acf7;
         vm.expectRevert();
-        verifier.callVerify10Signatures(proof, commitments, commitmentsPok, fakePubkeyX, fakePubkeyY, fakeTxHash);
+        verifier.callVerify10Signatures(proof, commitments, commitmentPok, fakePubkeyX, fakePubkeyY, fakeTxHash);
     }
 }
